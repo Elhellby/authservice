@@ -17,6 +17,10 @@ router.post('*', wrapAsync(async (req, res) => {
     await new Promise(resolve => setTimeout(() => resolve(), 50));
     throw new Error(message);
 }));
+router.patch('*', wrapAsync(async (req, res) => {
+    await new Promise(resolve => setTimeout(() => resolve(), 50));
+    throw new Error(message);
+}));
 
 router.use((error, req, res, next) => {
     res.status(404).send(new baseResponse(false, error.message));

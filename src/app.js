@@ -15,7 +15,8 @@ mongoose
   .connect(configuration.getKey('MONGO_SERVER'), {
     useNewUrlParser: true,
     dbName: configuration.getKey("MONGO_DB"),
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(db => {
     console.log("Base de datos conectada");
@@ -42,7 +43,7 @@ app.use(require("./routes/configRoute"));
 //#endregion
 
 //error handlers
-app.use(require("./handlers/pathErrorHandelr"));
+// app.use(require("./handlers/pathErrorHandelr"));
 
 //#region start the server
 app.listen(app.get("port"), () => {

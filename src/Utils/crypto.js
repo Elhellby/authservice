@@ -6,10 +6,6 @@ const iv = Buffer.alloc(16, 0);
 
 module.exports = {
     encrypt: (unencryptedValue) => {
-
-        console.log(iv)
-
-
         const cipher = crypto.createCipheriv(algorithm, key, iv);
         var encrypted = cipher.update(unencryptedValue, 'utf8', 'hex') + cipher.final('hex');
         return encrypted;

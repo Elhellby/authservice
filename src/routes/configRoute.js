@@ -9,10 +9,10 @@ const app = express();
 //#region Funcion que valida el token
 validaToken = (req, res, next) => {
   const urlReq = req.url;
-  if (urlReq == "/login") {
+  if (urlReq == "/login" || urlReq == '/register') {
     next();
   } else {
-    const bearerHeader = req.headers["authorization"];    
+    const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader != "undefined") {
       const bearer = bearerHeader.split(" ");
       const bearerToken = bearer[1];
@@ -21,7 +21,7 @@ validaToken = (req, res, next) => {
         if (usr != undefined) {
           const userModel = new UserSchema(usr.user);
           const validUser = await userModel.authenticate(
-            userModel.name,
+            userModel.email,
             userModel.password
           );
           if (validUser.status) {
