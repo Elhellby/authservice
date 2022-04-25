@@ -9,7 +9,7 @@ const app = express();
 //#region Funcion que valida el token
 validaToken = (req, res, next) => {
   const urlReq = req.url;
-  if (urlReq == "/login" || urlReq == '/register' || urlReq == '/ping') {
+  if (urlReq == "/login" || urlReq == '/register') {
     next();
   } else {
     const bearerHeader = req.headers["authorization"];
