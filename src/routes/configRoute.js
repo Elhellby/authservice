@@ -9,7 +9,7 @@ const app = express();
 //#region Funcion que valida el token
 validaToken = (req, res, next) => {
   const urlReq = req.url;
-  if (urlReq == "/login" || urlReq == '/register') {
+  if (urlReq == "/login" || urlReq == '/register' || urlReq == '/ping') {
     next();
   } else {
     const bearerHeader = req.headers["authorization"];
@@ -42,6 +42,12 @@ validaToken = (req, res, next) => {
 
 //#region Rutas del api
 app.use('/api/auth', validaToken, require("../routes/securityRoute"));
+app.get('/',(req, res)=>{
+  res.status(200).json({
+    message:'Im here',
+    date:new Date()
+  });
+})
 //#endregion
 
 module.exports = app;

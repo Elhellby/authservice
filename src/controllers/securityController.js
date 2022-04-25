@@ -76,7 +76,7 @@ controller = {
     res.status(httpCode).json(response);
   }),
   ping: customError(async (req, res, next) => {
-    response = new baseResponse(true, "Sesion activa.");
+    response = new baseResponse(true, "Servicio disponible.");
     res.status(httpCode).json(response);
   }),
   register: customError(async (req, res, next) => {
