@@ -3,7 +3,7 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const key = require("../Utils/generateKey");
 const app = express();
-
+const { version } =require('../../package.json');
 
 
 //#region Funcion que valida el token
@@ -42,10 +42,11 @@ validaToken = (req, res, next) => {
 
 //#region Rutas del api
 app.use('/api/auth', validaToken, require("../routes/securityRoute"));
-app.get('/',(req, res)=>{
+app.get('/', (req, res) => {
   res.status(200).json({
-    message:'Im here',
-    date:new Date()
+    message: 'Im here',
+    version: version,
+    date: new Date()
   });
 })
 //#endregion
