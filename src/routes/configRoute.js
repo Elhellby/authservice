@@ -27,14 +27,14 @@ validaToken = (req, res, next) => {
           if (validUser.status) {
             next();
           } else {
-            res.status(403).json(validUser);
+            res.status(401).json(validUser);
           }
         } else {
-          res.status(403).json({ success: false, message: "Acceso denegado" });
+          res.status(401).json({ success: false, message: "Acceso denegado" });
         }
       });
     } else {
-      res.status(403).json({ success: false, message: "Acceso denegado" });
+      res.status(401).json({ success: false, message: "Acceso denegado" });
     }
   }
 };
