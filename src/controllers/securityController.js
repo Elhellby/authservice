@@ -23,6 +23,7 @@ controller = {
               last_login: Date.parse(new Date()),
               logged_in: true
             });
+            httpCode = 200;
             response = new baseResponse(true, "Acceso concedido.", {
               token: token,
               userId: existUser.id
